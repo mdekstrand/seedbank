@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-numba = ["numba"]
+numba = ["numba >=0.54"]
 torch = ["torch"]
 cupy = ["cupy"]
 cuda11x = ["cupy-cuda11x"]

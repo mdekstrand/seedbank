@@ -86,7 +86,8 @@ jobs:
         uv sync --group test --extra ${{matrix.extra}}
 
     - name: Run tests
-      run: python -m pytest --cov=seedbank --cov-report=xml tests
+      run: |
+        uv run pytest --cov=seedbank --cov-report=xml tests
 
     - name: Upload logs
       uses: actions/upload-artifact@v3
