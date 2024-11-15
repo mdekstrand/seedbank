@@ -43,10 +43,12 @@ jobs:
 
     - name: Set up dev environment
       run: |
-        uv sync --group test
+        uv sync --only-group test
+        uv pip install .
 
     - name: Run tests
-      run: uv run pytest --cov=seedbank --cov-report=xml tests
+      run: |
+        uv run pytest --cov=seedbank --cov-report=xml tests
 
     - name: Upload logs
       uses: actions/upload-artifact@v3
@@ -83,7 +85,8 @@ jobs:
 
     - name: Set up dev environment
       run: |
-        uv sync --group test --extra ${{matrix.extra}}
+        uv sync --only-group test
+        uv pip install ".[${{matrix.extra}}]"
 
     - name: Run tests
       run: |
